@@ -17,3 +17,31 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 27.5px solid #dfe6ed;
+}
+
+.hexagon:after {
+  top: 100%;
+  border-top: 27.5px solid #dfe6ed;
+}
+.main:before {
+  bottom: 100%;
+  border-bottom: 27.5px solid #ffd924;
+}
+
+.main:after {
+  top: 100%;
+  border-top: 27.5px solid #ffd924;
+}
