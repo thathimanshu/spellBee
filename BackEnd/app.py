@@ -3,7 +3,8 @@ import random
 import json
 import nltk
 from nltk.corpus import words
-nltk.download('words')
+
+nltk.data.path.append('./nltk_data')
 
 app = Flask(__name__)
 
@@ -32,14 +33,8 @@ def checkWord(word):
 
 @app.route('/getNumOfPossibleWords/<word>', methods=['GET'])
 def getNumOfPossibleWords(word):
-    word_alphabets = set(word)
-    total = 0
-    for w in words.words():
-        if(len(w)<=3):
-            continue
-        w_alphabets = set(w)
-        if w_alphabets.issubset(word_alphabets):
-            total = total+1
+    word_alphabets = set(word.lower())
+    total = sum(1 for w in words.words() if len(w) > 3 and set(w).issubset(word_alphabets))
     return jsonify({'totalPossible': total, 'word': word})
 
 
