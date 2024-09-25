@@ -11,6 +11,10 @@ def check_word(word):
     return word.lower() in words.words()
 
 
+@app.route('/start', methods=['GET'])
+def start():
+    return jsonify({'started': True})
+
 @app.route('/findWord', methods=['GET'])
 def find_word():
     idx = str(random.randint(0,7953))
@@ -27,7 +31,7 @@ def checkWord(word):
     return jsonify({'word': word, 'exists': exists})
 
 @app.route('/getNumOfPossibleWords/<word>', methods=['GET'])
-def find_words_with_same_alphabets_length(word):
+def getNumOfPossibleWords(word):
     word_alphabets = set(word)
     total = 0
     for w in words.words():
