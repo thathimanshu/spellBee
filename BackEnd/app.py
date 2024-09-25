@@ -18,7 +18,6 @@ def find_word():
     with open(path, 'r') as file:
         data = json.load(file)
     value = data.get(idx)
-    print(value+" sa")
     return jsonify({'word': value})
 
 
@@ -26,6 +25,19 @@ def find_word():
 def checkWord(word):
     exists = check_word(word)
     return jsonify({'word': word, 'exists': exists})
+
+@app.route('/getNumOfPossibleWords/<word>', methods=['GET'])
+def find_words_with_same_alphabets_length(word):
+    word_alphabets = set(word)
+    total = 0
+    for w in words.words():
+        if(len(w)<=3):
+            continue
+        w_alphabets = set(w)
+        if w_alphabets.issubset(word_alphabets):
+            total = total+1
+    return jsonify({'totalPossible': total, 'word': word})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
