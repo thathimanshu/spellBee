@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import random
 import json
 import nltk
@@ -7,6 +8,7 @@ from nltk.corpus import words
 nltk.data.path.append('./nltk_data')
 
 app = Flask(__name__)
+CORS(app) 
 
 def check_word(word):
     return word.lower() in words.words()
