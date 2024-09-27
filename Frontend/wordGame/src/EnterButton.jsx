@@ -8,9 +8,7 @@ export default function EnterButton() {
   const handleWordResult = (res) => {
     if(res.exists)
     setValidWords((prevWords) => [...prevWords, res.word]);  // Add the valid word to the list
-    else{
-      setPValue('');
-    }
+    setPValue('');
   };
   const handleCheckWord  = () => {
     checkWord(pValue, handleWordResult,mainWord);  // Pass handleWordFound as a callback
