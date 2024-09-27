@@ -1,4 +1,4 @@
-import { useContext ,useEffect } from 'react';
+import { useContext  } from 'react';
 import { AppContext } from './AppContext';
 
 export default function Letter({ bgColor, text, className = "" }) {

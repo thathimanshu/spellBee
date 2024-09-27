@@ -6,7 +6,7 @@ import { AppContext } from './AppContext.jsx';
 function Letters(){
   const [letters, setLetters] = useState([]);
   const [loading, setLoading] = useState(true); 
-  const {mainWord, setmainWord} = useContext(AppContext); 
+  const {setmainWord,setwordsLeft} = useContext(AppContext); 
 
   useEffect(() => {
     axios.get('https://spellowl.onrender.com/findWord')
@@ -15,11 +15,21 @@ function Letters(){
           setmainWord(() => word);
           setLetters(word.split('')); 
           setLoading(false); 
+          console.log(word);
+          axios.get(`https://spellowl.onrender.com/getNumOfPossibleWords/${word}`)
+            .then(res2 => {   
+                setwordsLeft(res2.data.totalPossible);
+            })
+            .catch(error => {
+                console.error('Error fetching the word', error);
+            });
       })
       .catch(error => {
         console.error('Error fetching the word', error);
         setLoading(false); 
       });
+
+      
   }, []);  
 
     if (loading) {
