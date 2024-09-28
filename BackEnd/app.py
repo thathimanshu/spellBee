@@ -6,12 +6,12 @@ import nltk
 from nltk.corpus import words
 
 nltk.data.path.append('./nltk_data')
-
+allWordList = words.words()
 app = Flask(__name__)
 CORS(app) 
 
 def check_word(word):
-    return word.lower() in words.words()
+    return word.lower() in allWordList
 
 
 @app.route('/start', methods=['GET'])
@@ -39,7 +39,7 @@ def getNumOfPossibleWords(word):
     centerLetter = word[0].lower()  
     total = 0
     totalPoints = 0
-    for w in words.words():
+    for w in allWordList:
         lenWord = len(w)
         if lenWord > 3 and centerLetter in w and set(w).issubset(word_alphabets):
             total += 1
