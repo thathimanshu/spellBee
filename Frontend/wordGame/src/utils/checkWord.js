@@ -2,11 +2,13 @@ import axios from "axios";
 
 function clientSideCheck(word, onResult, mainWord){
   if(word.length<=3){
-    let msg = 'Too Short'
-    onResult({exists:false, word, length,msg});
+    onResult({exists:false, word, length,msg:'Too Short'});
     return false;
   }
-
+  if(!word.includes(mainWord[0])){
+    onResult({exists:false, word, length,msg:"Missing Center Letter"});
+    return false;
+  }
   let containsMainOnly = [...word].every(char => mainWord.includes(char));
   if(!containsMainOnly){
     let msg = 'Invalid Word'

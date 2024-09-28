@@ -3,7 +3,7 @@ import LetterMain from './LetterMain.jsx'
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { AppContext } from './AppContext.jsx';
-
+import randomizeString from './utils/randomizeString.js';
 function Letters(){
   const [letters, setLetters] = useState([]);
   const [loading, setLoading] = useState(true); 
@@ -12,11 +12,10 @@ function Letters(){
   useEffect(() => {
     axios.get('https://spellowl.onrender.com/findWord')
       .then(response => {   
-          const word = response.data.word.toUpperCase();
+          const word = randomizeString(response.data.word.toUpperCase());
           setmainWord(() => word);
           setLetters(word.split('')); 
           setLoading(false); 
-          console.log(word);
           axios.get(`https://spellowl.onrender.com/getNumOfPossibleWords/${word}`)
             .then(res2 => {   
                 setwordsLeft(res2.data.totalPossible);
