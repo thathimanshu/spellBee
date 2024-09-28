@@ -17,7 +17,7 @@ function clientSideCheck(word, onResult, mainWord){
   }
   return true;
 }
-export default function checkWord(word, onResult, mainWord){
+export default function checkWord(word, onResult, mainWord, setValidWords,setPValue ){
      if(!clientSideCheck(word,onResult, mainWord)){
       return;
      }
@@ -28,7 +28,7 @@ export default function checkWord(word, onResult, mainWord){
         let msg = '';
         if(!exists) msg = 'Invalid Word'
         let length = word.length;
-        onResult({exists, word, length, msg});
+        onResult({exists, word, length, msg},setValidWords,setPValue);
       })
       .catch(error => {
         console.error('Error fetching the word', error);

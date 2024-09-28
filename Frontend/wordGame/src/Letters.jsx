@@ -54,11 +54,11 @@ function Letters(){
             </div>
             <div className='flex justify-center'>
                 <Letter text={letters[6]}/>
-                <LetterMain text={letters[3]}/>
+                <LetterMain text={letters[0]}/>
                 <Letter text={letters[4]}/>
             </div>
             <div className='flex justify-center'>
-                <Letter text={letters[0]}/>
+                <Letter text={letters[3]}/>
                 <Letter text={letters[2]}/>
             </div>
         </div>
