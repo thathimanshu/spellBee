@@ -7,7 +7,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light;
+  color-scheme: light,dark;
   color: black;
   /*background-color: rgb(17 24 39 / var(--tw-bg-opacity))  #111827 ;*/
 
@@ -38,10 +38,10 @@
 }
 .main:before {
   bottom: 100%;
-  border-bottom: 27.5px solid #ffd924;
+  border-bottom: 27.5px solid white;
 }
 
 .main:after {
   top: 100%;
-  border-top: 27.5px solid #ffd924;
+  border-top: 27.5px solid white;
 }

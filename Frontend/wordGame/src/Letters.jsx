@@ -1,4 +1,5 @@
 import Letter from './Letter.jsx'
+import LetterMain from './LetterMain.jsx'
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { AppContext } from './AppContext.jsx';
@@ -49,17 +50,17 @@ function Letters(){
     return (
         <div className='flex flex-col h-[350px] w-[350px] justify-center items-center'>
             <div className='flex justify-center'>
-                <Letter bgColor={'#dfe6ed'} text={letters[5]}/>
-                <Letter bgColor={'#dfe6ed'} text={letters[1]}/>
+                <Letter text={letters[5]}/>
+                <Letter text={letters[1]}/>
             </div>
             <div className='flex justify-center'>
-                <Letter bgColor={'#dfe6ed'} text={letters[6]}/>
-                <Letter bgColor={'#ffd924'} text={letters[3]} className='main'/>
-                <Letter bgColor={'#dfe6ed'} text={letters[4]}/>
+                <Letter text={letters[6]}/>
+                <LetterMain text={letters[3]}/>
+                <Letter text={letters[4]}/>
             </div>
             <div className='flex justify-center'>
-                <Letter bgColor={'#dfe6ed'} text={letters[0]}/>
-                <Letter bgColor={'#dfe6ed'} text={letters[2]}/>
+                <Letter text={letters[0]}/>
+                <Letter text={letters[2]}/>
             </div>
         </div>
     )

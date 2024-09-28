@@ -41,7 +41,7 @@ export default function TypedText() {
   return (
     <div className="mt-6 sm:w-[420px] w-full flex justify-center align-center pl-1">
       <p className="font-bold text-4xl">{pValue}</p>
-      <span className="text-yellow-500 font-extrabold text-4xl animate-blink">|</span>
+      <span className="text-themeColor dark:text-themeColorDark font-extrabold text-4xl animate-blink">|</span>
     </div>
   )
 }
