@@ -36,9 +36,17 @@ def checkWord(word):
 @app.route('/getNumOfPossibleWords/<word>', methods=['GET'])
 def getNumOfPossibleWords(word):
     word_alphabets = set(word.lower())
-    total = sum(1 for w in words.words() if len(w) > 3 and set(w).issubset(word_alphabets))
-    return jsonify({'totalPossible': total, 'word': word})
-
+    centerLetter = word[0].lower()  
+    total = 0
+    totalPoints = 0
+    for w in words.words():
+        lenWord = len(w)
+        if lenWord > 3 and centerLetter in w and set(w).issubset(word_alphabets):
+            total += 1
+            totalPoints += (lenWord-3)
+            
+    
+    return jsonify({'totalPossible': total,'totalPointsPossible':totalPoints ,'word': word})
 
 if __name__ == '__main__':
     app.run(debug=True)
