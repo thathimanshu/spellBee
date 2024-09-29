@@ -4,6 +4,7 @@ import Letters from './Letters.jsx'
 import AddedList from './AddedList.jsx'
 import TypedText from './TypedText.jsx'
 import InputButtons from './InputButtons.jsx'
+import Notification from './Notification.jsx'
 import { AppProvider } from './AppContext.jsx'
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Navbar/>
         <PointBar/>
         <AddedList/>
+        <Notification/>
         <TypedText/>
         <Letters/>
         <InputButtons/>
