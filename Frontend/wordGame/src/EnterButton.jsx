@@ -3,10 +3,9 @@ import { AppContext } from './AppContext';
 import handleCheckWord from './utils/handleResult'
 
 export default function EnterButton() {
-  const { pValue,setPValue, setValidWords, mainWord } = useContext(AppContext); 
-
+  const { pValue,setPValue, setValidWords, mainWord,wordList, setWordList } = useContext(AppContext); 
   function checkWord(){
-    handleCheckWord(pValue, setPValue, mainWord, setValidWords);
+    handleCheckWord(pValue, setPValue, mainWord, setValidWords,wordList, setWordList);
   }
   return (
     <button 

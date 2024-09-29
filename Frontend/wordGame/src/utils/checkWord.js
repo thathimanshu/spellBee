@@ -1,12 +1,16 @@
 import axios from "axios";
 
-function clientSideCheck(word, onResult, mainWord){
+function clientSideCheck(word, onResult, mainWord,wordList){
   if(word.length<=3){
     onResult({exists:false, word, length,msg:'Too Short'});
     return false;
   }
   if(!word.includes(mainWord[0])){
     onResult({exists:false, word, length,msg:"Missing Center Letter"});
+    return false;
+  }
+  if(wordList.includes(word)){
+    onResult({exists:false, word, length,msg:"Already Found"});
     return false;
   }
   let containsMainOnly = [...word].every(char => mainWord.includes(char));
@@ -17,8 +21,8 @@ function clientSideCheck(word, onResult, mainWord){
   }
   return true;
 }
-export default function checkWord(word, onResult, mainWord, setValidWords,setPValue ){
-     if(!clientSideCheck(word,onResult, mainWord)){
+export default function checkWord(word, onResult, mainWord, setValidWords,setPValue,wordList ){
+     if(!clientSideCheck(word,onResult, mainWord,wordList)){
       return;
      }
     // Call the API when the button is clicked

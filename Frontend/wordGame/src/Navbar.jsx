@@ -16,12 +16,10 @@ function Navbar() {
   }
 
   return (
-    <div className="w-screen bg-themeColor dark:bg-themeColorDark flex justify-center">
+    <div className="w-screen bg-themeColor dark:bg-themeColorDark flex justify-center px-2 sm:px-0">
       <div className="w-full sm:w-[420px] flex justify-between">
-        <div>
-          <span className="material-symbols-outlined font-light text-4xl">
-            emoji_nature
-          </span>
+        <div className='flex items-center'>
+            <img src='owl.png' className='h-[32px]'></img>
         </div>
 
         <div>
