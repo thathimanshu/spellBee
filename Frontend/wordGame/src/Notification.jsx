@@ -15,7 +15,7 @@ function Notification() {
       setShow(true);
       setTimeout(() => {
         setShow(false);
-      }, 3000);
+      }, 2000);
     };
 
     // Listen for the custom event
