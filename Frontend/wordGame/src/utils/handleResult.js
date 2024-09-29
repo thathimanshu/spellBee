@@ -3,7 +3,7 @@ import { triggerNotification } from './external';
 
 import checkWord from './checkWord'
 
-const handleWordResult = (res, setValidWords,setPValue,setwordsLeft,setWordList) => {
+const handleWordResult = (res, setValidWords,setwordsLeft,setWordList) => {
     if(res.exists){
       setValidWords((prevWords) => [...prevWords, res.word]);  // Add the valid word to the list
       setwordsLeft((w) => w-=1);
@@ -15,10 +15,10 @@ const handleWordResult = (res, setValidWords,setPValue,setwordsLeft,setWordList)
     }  else{
       triggerNotification(res.msg,res.exists);  // This will trigger the notification
     }
-    setPValue(()=>'')
-
   };
 
   export default function handleCheckWord(pValue, setPValue, mainWord, setValidWords,setwordsLeft,wordList, setWordList) {
-    checkWord(pValue, (res) => handleWordResult(res, setValidWords, setPValue,setwordsLeft,setWordList), mainWord, setValidWords,setPValue,setwordsLeft,wordList, setWordList );
+    let val = pValue;
+    setPValue(()=>'');
+    checkWord(val, (res) => handleWordResult(res, setValidWords,setwordsLeft,setWordList), mainWord, setValidWords,setwordsLeft,wordList, setWordList );
 };
