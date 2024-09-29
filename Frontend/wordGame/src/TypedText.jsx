@@ -2,7 +2,7 @@ import { useContext ,useEffect } from 'react';
 import { AppContext } from './AppContext';
 import handleCheckWord from './utils/handleResult'
 export default function TypedText() {
-const {mainWord, pValue, setPValue, setValidWords,setwordsLeft,wordList, setWordList } = useContext(AppContext);
+const {mainWord, pValue, setPValue, setValidWords,setwordsLeft,wordList, setWordList,setAchievedPoints } = useContext(AppContext);
 
   
   useEffect(() => {
@@ -13,7 +13,7 @@ const {mainWord, pValue, setPValue, setValidWords,setwordsLeft,wordList, setWord
         setPValue((prev) => prev.slice(0, -1)); 
       }
       else if(event.key ==='Enter'){
-        handleCheckWord(pValue, setPValue, mainWord, setValidWords,setwordsLeft,wordList, setWordList);
+        handleCheckWord(pValue, setPValue, mainWord, setValidWords,setwordsLeft,wordList, setWordList,setAchievedPoints);
       }
     };
     window.addEventListener('keydown', handleInput);

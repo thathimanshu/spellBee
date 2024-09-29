@@ -8,6 +8,7 @@ function Letters(){
   const [letters, setLetters] = useState([]);
   const [loading, setLoading] = useState(true); 
   const {setmainWord,setwordsLeft} = useContext(AppContext); 
+  const {possiblePoints, setPossiblePoints} = useContext(AppContext); 
 
   useEffect(() => {
     axios.get('https://spellowl.onrender.com/findWord')
@@ -19,6 +20,7 @@ function Letters(){
           axios.get(`https://spellowl.onrender.com/getNumOfPossibleWords/${word}`)
             .then(res2 => {   
                 setwordsLeft(res2.data.totalPossible);
+                setPossiblePoints(res2.data.totalPointsPossible);
             })
             .catch(error => {
                 console.error('Error fetching the word', error);
