@@ -17,8 +17,8 @@ export default {
         blink: 'blink 1s infinite',
       },
       colors :{
-        'themeColor':'#00e6e4',
-        'themeColorDark':'#00adaf'
+        'themeColor':'#06bee1',
+        'themeColorDark':'#1768ac'
       }
     },
   },

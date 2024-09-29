@@ -1,7 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // On component mount, check localStorage for the saved theme
+    const savedTheme = localStorage.getItem('darkMode');
+    if (savedTheme === 'true') {
+      document.querySelector('html').classList.add('dark');
+      setDarkMode(true); // Set dark mode
+    }
+  }, []);
 
   function toggleMode() {
     let html = document.querySelector('html');
@@ -9,9 +18,11 @@ function Navbar() {
     if (html.classList.contains('dark')) {
       html.classList.remove('dark');
       setDarkMode(false); // Light mode
+      localStorage.setItem('darkMode', false);
     } else {
       html.classList.add('dark');
       setDarkMode(true); // Dark mode
+      localStorage.setItem('darkMode', true);
     }
   }
 
