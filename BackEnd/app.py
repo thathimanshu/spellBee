@@ -44,6 +44,9 @@ def getNumOfPossibleWords(word):
         if lenWord > 3 and centerLetter in w and set(w).issubset(word_alphabets):
             total += 1
             totalPoints += (lenWord-3)
+            
+    
+    return jsonify({'totalPossible': total,'totalPointsPossible':totalPoints ,'word': word})
 
 @app.route('/getAllWords/<word>', methods=['GET'])
 def getAllWords(word):
