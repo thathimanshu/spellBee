@@ -56,7 +56,7 @@ def getAllWords(word):
     for w in allWordList:
         lenWord = len(w)
         if lenWord > 3 and centerLetter in w and set(w).issubset(word_alphabets):
-            allW.add(w)
+            allW.append(w)
 
     return jsonify({'allWords': allW})
 
