@@ -9,10 +9,7 @@ function clientSideCheck(word, onResult, mainWord){
     onResult({exists:false, word, length,msg:"Missing Center Letter"});
     return false;
   }
- /*  if(wordList.includes(word)){
-    onResult({exists:false, word, length,msg:"Already Found"});
-    return false;
-  } */
+
   let containsMainOnly = [...word].every(char => mainWord.includes(char));
   if(!containsMainOnly){
     let msg = 'Invalid Word'
@@ -21,7 +18,7 @@ function clientSideCheck(word, onResult, mainWord){
   }
   return true;
 }
-export default function checkWord(word, onResult, mainWord, setValidWords,setPValue ){
+export default function checkWord(word, onResult, mainWord, setValidWords,setPValue,setwordsLeft ){
      if(!clientSideCheck(word,onResult, mainWord)){
       return;
      }
@@ -32,7 +29,8 @@ export default function checkWord(word, onResult, mainWord, setValidWords,setPVa
         let msg = '';
         if(!exists) msg = 'Invalid Word'
         let length = word.length;
-        onResult({exists, word, length, msg},setValidWords,setPValue);
+        
+        onResult({exists, word, length, msg},setValidWords,setPValue,setwordsLeft);
       })
       .catch(error => {
         console.error('Error fetching the word', error);
