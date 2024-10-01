@@ -20,7 +20,7 @@ def start():
 
 @app.route('/findWord', methods=['GET'])
 def find_word():
-    idx = str(random.randint(0,7953))
+    idx = str(random.randint(0,19284))
     path = './wordList/unq1.json'
     with open(path, 'r') as file:
         data = json.load(file)
