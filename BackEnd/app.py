@@ -2,16 +2,16 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import random
 import json
-import nltk
-from nltk.corpus import words
+import pickle
 
-nltk.data.path.append('./nltk_data')
-allWordList = words.words()
+with open('wordList/properWords.pkl', 'rb') as file:
+    word_set = pickle.load(file)
+    
 app = Flask(__name__)
 CORS(app) 
 
 def check_word(word):
-    return word.lower() in allWordList
+    return word.lower() in word_set
 
 
 @app.route('/start', methods=['GET'])
@@ -21,7 +21,7 @@ def start():
 @app.route('/findWord', methods=['GET'])
 def find_word():
     idx = str(random.randint(0,7953))
-    path = './wordList/uniquelist.json'
+    path = './wordList/unq1.json'
     with open(path, 'r') as file:
         data = json.load(file)
     value = data.get(idx)
@@ -39,7 +39,7 @@ def getNumOfPossibleWords(word):
     centerLetter = word[0].lower()  
     total = 0
     totalPoints = 0
-    for w in allWordList:
+    for w in word_set:
         lenWord = len(w)
         if lenWord > 3 and centerLetter in w and set(w).issubset(word_alphabets):
             total += 1
@@ -53,7 +53,7 @@ def getAllWords(word):
     word_alphabets = set(word.lower())
     centerLetter = word[0].lower()  
     allW = []
-    for w in allWordList:
+    for w in word_set:
         lenWord = len(w)
         if lenWord > 3 and centerLetter in w and set(w).issubset(word_alphabets):
             allW.append(w)
