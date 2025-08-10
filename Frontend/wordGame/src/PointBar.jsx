@@ -6,7 +6,7 @@ import { useContext } from 'react';
 function PointBar(){
     const {achievedPoints, possiblePoints } = useContext(AppContext); 
 
-    let levelScore = [0,3,7,12,23,35,56,72,100];
+    let levelScore = [0, 4, 9, 15, 20, 24, 28, 30, 32];
     for (let i = 0; i < levelScore.length; i++) {
         levelScore[i] = Math.ceil((levelScore[i] / 100) * possiblePoints); // Convert and round up
     }    
