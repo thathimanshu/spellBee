@@ -20,12 +20,27 @@ def start():
 
 @app.route('/findWord', methods=['GET'])
 def find_word():
-    idx = str(random.randint(0,19284))
     path = './wordList/unq1.json'
     with open(path, 'r') as file:
         data = json.load(file)
-    value = data.get(idx)
-    return jsonify({'word': value})
+
+    while True:
+        idx = str(random.randint(0, 19284))
+        value = data.get(idx)
+
+        if not value:  # in case the index has no value
+            continue
+
+        # Check number of possible words
+        word_alphabets = set(value.lower())
+        centerLetter = value[0].lower()
+        total = 0
+        for w in word_set:
+            if len(w) > 3 and centerLetter in w and set(w).issubset(word_alphabets):
+                total += 1
+
+        if total >= 400:
+            return jsonify({'word': value, 'totalPossible': total})
 
 
 @app.route('/checkWord/<word>', methods=['GET'])
